@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>QT图表解决方案-QCustomPlot - Se7enXin</title><meta name="Description" content="关于 LoveIt 主题"><meta property="og:title" content="QT图表解决方案-QCustomPlot" />
+<meta property="og:description" content="一、QCustomPlot简介 QCustomPlot官网 QCustomPlot是一个用于编写可视化图表的 QT C&#43;&#43;库。 目录结构 qcustomp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/" /><meta property="og:image" content="https://se7enxin.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-12-28T14:48:00+00:00" />
+<meta property="article:modified_time" content="2017-12-28T14:48:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://se7enxin.github.io/logo.png"/>
+
+<meta name="twitter:title" content="QT图表解决方案-QCustomPlot"/>
+<meta name="twitter:description" content="一、QCustomPlot简介 QCustomPlot官网 QCustomPlot是一个用于编写可视化图表的 QT C&#43;&#43;库。 目录结构 qcustomp"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/" /><link rel="next" href="https://se7enxin.github.io/2018-03-14-raspberry-in-common-use/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "QT图表解决方案-QCustomPlot",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/se7enxin.github.io\/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot\/"
+        },"image": ["https:\/\/se7enxin.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "QT, C\u002b\u002b","wordcount":  1194 ,
+        "url": "https:\/\/se7enxin.github.io\/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot\/","datePublished": "2017-12-28T14:48:00+00:00","dateModified": "2017-12-28T14:48:00+00:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/se7enxin.github.io\/images\/avatar.png",
+                    "width":  528 ,
+                    "height":  560 
+                }},"author": {
+                "@type": "Person",
+                "name": "se7enxin"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Se7enXin"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>Se7enXin</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/Se7enXin" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Se7enXin"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw'></i></span>Se7enXin</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/Se7enXin" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">QT图表解决方案-QCustomPlot</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>se7enxin</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/qt/"><i class="far fa-folder fa-fw"></i>QT</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2017-12-28">2017-12-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1194 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/" class="leancloud_visitors" data-flag-title="QT图表解决方案-QCustomPlot">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#qcustomplot官网httpwwwqcustomplotcom"><a href="http://www.qcustomplot.com/">QCustomPlot官网</a></a></li>
+    <li><a href="#目录结构">目录结构</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1引入qcustomplot">1、引入QCustomPlot</a></li>
+    <li><a href="#2创建plot">2、创建plot</a></li>
+    <li><a href="#3回调函数qt槽函数">3、回调函数（QT槽函数）</a>
+      <ul>
+        <li><a href="#1接收数据实时刷新ui">（1）接收数据，实时刷新UI</a></li>
+        <li><a href="#2修改图表比例">（2）修改图表比例</a></li>
+        <li><a href="#3清除图表数据">（3）清除图表数据</a></li>
+      </ul>
+    </li>
+    <li><a href="#4效果预览">4、效果预览</a></li>
+    <li><a href="#5代码下载">5、代码下载</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#qcustomplot使用分享httpwwwcnblogscomswarmbeescategory908110html"><a href="http://www.cnblogs.com/swarmbees/category/908110.html">QCustomPlot使用分享</a></a></li>
+            <li><a href="#qcustomplot绘图控件的使用httpblogcsdnnetzhangfuliang123articledetails45197411"><a href="http://blog.csdn.net/zhangfuliang123/article/details/45197411">QCustomPlot绘图控件的使用</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="一qcustomplot简介">一、QCustomPlot简介</h1>
+<h2 id="qcustomplot官网httpwwwqcustomplotcom"><a href="http://www.qcustomplot.com/" target="_blank" rel="noopener noreffer">QCustomPlot官网</a></h2>
+<blockquote>
+<p>QCustomPlot是一个用于编写可视化图表的 QT C++库。</p>
+</blockquote>
+<h2 id="目录结构">目录结构</h2>
+<p>qcustomplot.cpp、qcustomplot.h为源码文件，需要添加到自己的工程中。
+example文件夹下有4个官方提供的demo，编译后可以直接运行。</p>
+<p><a href="https://imgtu.com/i/xxrVS" target="_blank" rel="noopener noreffer"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s1.ax1x.com/2017/12/28/xxrVS.png"
+        data-srcset="https://s1.ax1x.com/2017/12/28/xxrVS.png, https://s1.ax1x.com/2017/12/28/xxrVS.png 1.5x, https://s1.ax1x.com/2017/12/28/xxrVS.png 2x"
+        data-sizes="auto"
+        alt="https://s1.ax1x.com/2017/12/28/xxrVS.png"
+        title="目录结构" /></a></p>
+<h1 id="二使用">二、使用</h1>
+<blockquote>
+<p>本文举的例子：不断接收指定数据，实时刷新图表，最终绘制成一副完整的图表。</p>
+</blockquote>
+<p>本文编写时使用版本：</p>
+<pre><code>Version: 2.0.0
+</code></pre>
+<h2 id="1引入qcustomplot">1、引入QCustomPlot</h2>
+<p>将源码文件添加到工程中。</p>
+<pre><code>qcustomplot.cpp
+qcustomplot.h
+</code></pre>
+<h2 id="2创建plot">2、创建plot</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">plotsInit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QCustomPlot</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">screen_w</span><span class="o">*</span><span class="mi">0</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span> <span class="n">screen_h</span><span class="o">*</span><span class="mi">120</span><span class="o">/</span><span class="mi">600</span><span class="p">,</span> <span class="n">screen_w</span><span class="o">*</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">,</span> <span class="n">screen_h</span><span class="o">*</span><span class="mi">470</span><span class="o">/</span><span class="mi">600</span><span class="p">);</span><span class="c1">//设置曲线系坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">setLabel</span><span class="p">(</span><span class="n">tr</span><span class="p">(</span><span class="s">&#34;压力(Pa)&#34;</span><span class="p">));</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">legend</span><span class="o">-&gt;</span><span class="n">setVisible</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//添加第一条曲线
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">addGraph</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">QPen</span> <span class="n">bluePen</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">bluePen</span><span class="p">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="s">&#34;#33CCCC&#34;</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">bluePen</span><span class="p">.</span><span class="n">setWidthF</span><span class="p">(</span><span class="mf">2.5</span><span class="p">);</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setPen</span><span class="p">(</span><span class="n">bluePen</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="n">tr</span><span class="p">(</span><span class="s">&#34;数据1&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//曲线上数据点的样式，大小；这里设置为空心圆
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="o">::</span><span class="n">ssCircle</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//添加第二条曲线
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">addGraph</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">QPen</span> <span class="n">greenPen</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">greenPen</span><span class="p">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="s">&#34;#0066CC&#34;</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">greenPen</span><span class="p">.</span><span class="n">setWidthF</span><span class="p">(</span><span class="mf">2.5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setPen</span><span class="p">(</span><span class="n">greenPen</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="n">tr</span><span class="p">(</span><span class="s">&#34;数据2&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="o">::</span><span class="n">ssCircle</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//添加第三条曲线
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">addGraph</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">QPen</span> <span class="n">redPen</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">redPen</span><span class="p">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="s">&#34;#FF3366&#34;</span><span class="p">));</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">redPen</span><span class="p">.</span><span class="n">setWidthF</span><span class="p">(</span><span class="mf">2.5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setPen</span><span class="p">(</span><span class="n">redPen</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="n">tr</span><span class="p">(</span><span class="s">&#34;数据3&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="p">(</span><span class="n">QCPScatterStyle</span><span class="o">::</span><span class="n">ssCircle</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">axisRect</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">insetLayout</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setInsetAlignment</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Qt</span><span class="o">::</span><span class="n">AlignTop</span><span class="o">|</span><span class="n">Qt</span><span class="o">::</span><span class="n">AlignRight</span><span class="p">);</span><span class="c1">//标签位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// set blank axis lines:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">xAxis</span><span class="o">-&gt;</span><span class="n">setTicks</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">//刻度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">setTicks</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">xAxis</span><span class="o">-&gt;</span><span class="n">setTickLabels</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>  <span class="c1">//文本
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">setTickLabels</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// make top right axes clones of bottom left axes:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">      一个默认的坐标轴矩形配置，包括：顶部坐标轴跟随底部坐标轴同步、右侧坐标轴跟随左侧坐标轴同步，
+</span></span></span><span class="line"><span class="cl"><span class="cm">      不仅仅是坐标轴范围跟随同步，包括文本精度、文本格式、坐标轴类型、是否自动生成刻度、刻度间距等等。
+</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">axisRect</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">setupFullAxesBox</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="3回调函数qt槽函数">3、回调函数（QT槽函数）</h2>
+<p>通过QT中的信号和槽机制，外部发送Signal来调用槽函数。</p>
+<p>以下（2）举例，创建信号和槽：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">changePlotsRangeSignal</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SIGNALS</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">connect</span><span class="p">(</span><span class="n">changePlotsRangeSignal</span><span class="p">,</span><span class="n">SIGNAL</span><span class="p">(</span><span class="n">changePlotsRangeSignal</span><span class="p">()),</span> <span class="k">this</span><span class="p">,</span> <span class="n">SLOT</span><span class="p">(</span><span class="n">changePlotsRangeCb</span><span class="p">()));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>外部调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="n">changePlotsRangeSignal</span><span class="o">-&gt;</span><span class="n">sendChangePlotsRangeSignal</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="1接收数据实时刷新ui">（1）接收数据，实时刷新UI</h3>
+<p>每接收到一次数据时，调用该函数，实时刷新图表。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">data_size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">QVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">data1_x_</span><span class="p">(</span><span class="n">data_size</span><span class="p">),</span> <span class="n">data1_y_</span><span class="p">(</span><span class="n">data_size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">QVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">data2_x_</span><span class="p">(</span><span class="n">data_size</span><span class="p">),</span> <span class="n">data2_y_</span><span class="p">(</span><span class="n">data_size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">QVector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">data3_x_</span><span class="p">(</span><span class="n">data_size</span><span class="p">),</span> <span class="n">data3_y_</span><span class="p">(</span><span class="n">data_size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">recv_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">changePlotsDataCb</span><span class="p">(</span><span class="kt">float</span> <span class="n">data1_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data1_y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data2_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data2_y</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data3_x</span><span class="p">,</span> <span class="kt">float</span> <span class="n">data3_y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data1_x_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data1_x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data1_y_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data1_y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data2_x_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data2_x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data2_y_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data2_y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data3_x_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data3_x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data3_y_</span><span class="p">[</span><span class="n">recv_count</span><span class="p">]</span> <span class="o">=</span> <span class="n">data3_y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">recv_count</span> <span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setData</span><span class="p">(</span><span class="n">data1_x_</span><span class="p">,</span> <span class="n">data1_y_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setData</span><span class="p">(</span><span class="n">data2_x_</span><span class="p">,</span> <span class="n">data2_y_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setData</span><span class="p">(</span><span class="n">data3_x_</span><span class="p">,</span> <span class="n">data3_y_</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rescaleAxes</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">//坐标轴自适应
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rescaleAxes</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">//坐标轴自适应
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">rescaleAxes</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span> <span class="c1">//坐标轴自适应
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">replot</span><span class="p">();</span>  <span class="c1">//重绘
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2修改图表比例">（2）修改图表比例</h3>
+<p>数据接收完毕后调用一次，缩放图表，优化显示效果。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">changePlotsRangeCb</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// zoom out a bit: 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">scaleRange</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">yAxis</span><span class="o">-&gt;</span><span class="n">range</span><span class="p">().</span><span class="n">center</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">xAxis</span><span class="o">-&gt;</span><span class="n">scaleRange</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">xAxis</span><span class="o">-&gt;</span><span class="n">range</span><span class="p">().</span><span class="n">center</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">replot</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3清除图表数据">（3）清除图表数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">MainWindow</span><span class="o">::</span><span class="n">clearPlotsDataCb</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">().</span><span class="n">data</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">().</span><span class="n">data</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">().</span><span class="n">data</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">customPlot</span><span class="o">-&gt;</span><span class="n">replot</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>若之前调用过（2），那么清除后需要将图表比例复原。</p>
+<pre><code>customPlot-&gt;yAxis-&gt;scaleRange(0.9, customPlot-&gt;yAxis-&gt;range().center());
+customPlot-&gt;xAxis-&gt;scaleRange(0.9, customPlot-&gt;xAxis-&gt;range().center());
+</code></pre>
+<h2 id="4效果预览">4、效果预览</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/qcustomplot.gif"
+        data-srcset="/images/qcustomplot.gif, /images/qcustomplot.gif 1.5x, /images/qcustomplot.gif 2x"
+        data-sizes="auto"
+        alt="/images/qcustomplot.gif"
+        title="/images/qcustomplot.gif" /></p>
+<h2 id="5代码下载">5、代码下载</h2>
+<p><a href="https://github.com/Se7enXin/QCustomPlots_Demo.git" target="_blank" rel="noopener noreffer">Demo地址</a></p>
+<h1 id="三推荐资料">三、推荐资料</h1>
+<h4 id="qcustomplot使用分享httpwwwcnblogscomswarmbeescategory908110html"><a href="http://www.cnblogs.com/swarmbees/category/908110.html" target="_blank" rel="noopener noreffer">QCustomPlot使用分享</a></h4>
+<blockquote>
+<p>一共7篇文章，介绍的比较详细。</p>
+</blockquote>
+<h4 id="qcustomplot绘图控件的使用httpblogcsdnnetzhangfuliang123articledetails45197411"><a href="http://blog.csdn.net/zhangfuliang123/article/details/45197411" target="_blank" rel="noopener noreffer">QCustomPlot绘图控件的使用</a></h4>
+<blockquote>
+<p>一些图表初始化时常用的设置</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2017-12-28</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/" data-hashtag="QT"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/" data-title="QT图表解决方案-QCustomPlot"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/" data-title="QT图表解决方案-QCustomPlot"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/" data-title="QT图表解决方案-QCustomPlot"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/qt/">QT</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/2018-03-14-raspberry-in-common-use/" class="next" rel="next" title="Raspberry in common use">Raspberry in common use<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.98.0-DEV">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">se7enxin</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"eaUELC1CPl4nEo91w4kb21oe-gzGzoHsz","appKey":"4CNuuxwJ92oNpwAn4CXoEXEC","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://eauelc1c.lc-cn-n1-shared.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

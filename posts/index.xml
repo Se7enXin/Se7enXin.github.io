@@ -1,0 +1,43 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有文章 - Se7enXin</title>
+        <link>https://se7enxin.github.io/posts/</link>
+        <description>所有文章 | Se7enXin</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>se7enxin666@gmail.com (se7enxin)</managingEditor>
+            <webMaster>se7enxin666@gmail.com (se7enxin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 May 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://se7enxin.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>DIY一个炫酷的像素时钟</title>
+    <link>https://se7enxin.github.io/2019-05-29-%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/</link>
+    <pubDate>Wed, 29 May 2019 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2019-05-29-%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/</guid>
+    <description><![CDATA[一、介绍 1、官网Docs 2、简介 wifi模块作为客户端与服务器连接同一wifi 客户端尝试与服务器建立连接，成功建立连接后客户端向服务器发出信]]></description>
+</item><item>
+    <title>JSON解析——cJSON</title>
+    <link>https://se7enxin.github.io/2018-06-12-json%E8%A7%A3%E6%9E%90cjson/</link>
+    <pubDate>Tue, 12 Jun 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2018-06-12-json%E8%A7%A3%E6%9E%90cjson/</guid>
+    <description><![CDATA[一、简介 cJSON Source Code cJSON 是一个以ANSI C (C89) 标准编写的轻量级JSON解析库。 Introducing JSON JSON在线解析 二、How To Use cJSON包含两个文件：cJSON.c]]></description>
+</item><item>
+    <title>Raspberry GPIO —— WiringPi  交叉编译</title>
+    <link>https://se7enxin.github.io/2018-04-12-raspberry-gpiowiringpi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</link>
+    <pubDate>Thu, 12 Apr 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2018-04-12-raspberry-gpiowiringpi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</guid>
+    <description><![CDATA[一、Wiring Pi WiringPi is a PIN based GPIO access library written in C for the BCM2835, BCM2836 and BCM2837 SoC devices used in all Raspberry Pi. 二、交叉编译 程序在虚拟机编译，在树莓派运行。 （1）toochain 交叉编译]]></description>
+</item><item>
+    <title>Raspberry in common use</title>
+    <link>https://se7enxin.github.io/2018-03-14-raspberry-in-common-use/</link>
+    <pubDate>Wed, 14 Mar 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2018-03-14-raspberry-in-common-use/</guid>
+    <description><![CDATA[一、Raspberry 二、Config （1）设置静态IP /etc/network/interfaces auto eth0 iface eth0 inet static address xxx.xxx.xxx.xxx gateway xxx.xxx.xxx.xxx netmask 255.255.255.0 重置网络： 1 $ /etc/init.d/networking restart （2）设置路由 1 $ route add default gw xxx.xxx.xxx.xxx （3）DNS]]></description>
+</item><item>
+    <title>QT图表解决方案-QCustomPlot</title>
+    <link>https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/</link>
+    <pubDate>Thu, 28 Dec 2017 14:48:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2017-12-28-qt%E5%9B%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-qcustomplot/</guid>
+    <description><![CDATA[一、QCustomPlot简介 QCustomPlot官网 QCustomPlot是一个用于编写可视化图表的 QT C++库。 目录结构 qcustomp]]></description>
+</item></channel>
+</rss>

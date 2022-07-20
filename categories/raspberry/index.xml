@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Raspberry - 分类 - Se7enXin</title>
+        <link>https://se7enxin.github.io/categories/raspberry/</link>
+        <description>Raspberry - 分类 - Se7enXin</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>se7enxin666@gmail.com (se7enxin)</managingEditor>
+            <webMaster>se7enxin666@gmail.com (se7enxin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 29 May 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://se7enxin.github.io/categories/raspberry/" rel="self" type="application/rss+xml" /><item>
+    <title>DIY一个炫酷的像素时钟</title>
+    <link>https://se7enxin.github.io/2019-05-29-%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/</link>
+    <pubDate>Wed, 29 May 2019 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2019-05-29-%E5%83%8F%E7%B4%A0%E6%97%B6%E9%92%9F/</guid>
+    <description><![CDATA[一、介绍 1、官网Docs 2、简介 wifi模块作为客户端与服务器连接同一wifi 客户端尝试与服务器建立连接，成功建立连接后客户端向服务器发出信]]></description>
+</item><item>
+    <title>Raspberry GPIO —— WiringPi  交叉编译</title>
+    <link>https://se7enxin.github.io/2018-04-12-raspberry-gpiowiringpi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</link>
+    <pubDate>Thu, 12 Apr 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2018-04-12-raspberry-gpiowiringpi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</guid>
+    <description><![CDATA[一、Wiring Pi WiringPi is a PIN based GPIO access library written in C for the BCM2835, BCM2836 and BCM2837 SoC devices used in all Raspberry Pi. 二、交叉编译 程序在虚拟机编译，在树莓派运行。 （1）toochain 交叉编译]]></description>
+</item><item>
+    <title>Raspberry in common use</title>
+    <link>https://se7enxin.github.io/2018-03-14-raspberry-in-common-use/</link>
+    <pubDate>Wed, 14 Mar 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2018-03-14-raspberry-in-common-use/</guid>
+    <description><![CDATA[一、Raspberry 二、Config （1）设置静态IP /etc/network/interfaces auto eth0 iface eth0 inet static address xxx.xxx.xxx.xxx gateway xxx.xxx.xxx.xxx netmask 255.255.255.0 重置网络： 1 $ /etc/init.d/networking restart （2）设置路由 1 $ route add default gw xxx.xxx.xxx.xxx （3）DNS]]></description>
+</item></channel>
+</rss>

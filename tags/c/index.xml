@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>C - 标签 - Se7enXin</title>
+        <link>https://se7enxin.github.io/tags/c/</link>
+        <description>C - 标签 - Se7enXin</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>se7enxin666@gmail.com (se7enxin)</managingEditor>
+            <webMaster>se7enxin666@gmail.com (se7enxin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 Jun 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://se7enxin.github.io/tags/c/" rel="self" type="application/rss+xml" /><item>
+    <title>JSON解析——cJSON</title>
+    <link>https://se7enxin.github.io/2018-06-12-json%E8%A7%A3%E6%9E%90cjson/</link>
+    <pubDate>Tue, 12 Jun 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2018-06-12-json%E8%A7%A3%E6%9E%90cjson/</guid>
+    <description><![CDATA[一、简介 cJSON Source Code cJSON 是一个以ANSI C (C89) 标准编写的轻量级JSON解析库。 Introducing JSON JSON在线解析 二、How To Use cJSON包含两个文件：cJSON.c]]></description>
+</item><item>
+    <title>Raspberry GPIO —— WiringPi  交叉编译</title>
+    <link>https://se7enxin.github.io/2018-04-12-raspberry-gpiowiringpi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</link>
+    <pubDate>Thu, 12 Apr 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2018-04-12-raspberry-gpiowiringpi-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</guid>
+    <description><![CDATA[一、Wiring Pi WiringPi is a PIN based GPIO access library written in C for the BCM2835, BCM2836 and BCM2837 SoC devices used in all Raspberry Pi. 二、交叉编译 程序在虚拟机编译，在树莓派运行。 （1）toochain 交叉编译]]></description>
+</item></channel>
+</rss>

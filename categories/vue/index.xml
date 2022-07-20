@@ -1,0 +1,8 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Vue - 分类 - Se7enXin</title>
+        <link>https://se7enxin.github.io/categories/vue/</link>
+        <description>Vue - 分类 - Se7enXin</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>se7enxin666@gmail.com (se7enxin)</managingEditor>
+            <webMaster>se7enxin666@gmail.com (se7enxin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://se7enxin.github.io/categories/vue/" rel="self" type="application/rss+xml" /></channel>
+</rss>

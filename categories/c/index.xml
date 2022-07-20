@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>C - 分类 - Se7enXin</title>
+        <link>https://se7enxin.github.io/categories/c/</link>
+        <description>C - 分类 - Se7enXin</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>se7enxin666@gmail.com (se7enxin)</managingEditor>
+            <webMaster>se7enxin666@gmail.com (se7enxin)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 12 Jun 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://se7enxin.github.io/categories/c/" rel="self" type="application/rss+xml" /><item>
+    <title>JSON解析——cJSON</title>
+    <link>https://se7enxin.github.io/2018-06-12-json%E8%A7%A3%E6%9E%90cjson/</link>
+    <pubDate>Tue, 12 Jun 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://se7enxin.github.io/2018-06-12-json%E8%A7%A3%E6%9E%90cjson/</guid>
+    <description><![CDATA[一、简介 cJSON Source Code cJSON 是一个以ANSI C (C89) 标准编写的轻量级JSON解析库。 Introducing JSON JSON在线解析 二、How To Use cJSON包含两个文件：cJSON.c]]></description>
+</item></channel>
+</rss>
